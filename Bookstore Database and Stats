@@ -1,0 +1,26 @@
+--- create a bookstore database
+
+CREATE TABLE bookstore (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, genre TEXT, quantity INTEGER);
+
+INSERT INTO bookstore VALUES (1, "harry potter", 20, "ya", 2);
+INSERT INTO bookstore VALUES (2, "hunger games", 15, "ya", 3);
+INSERT INTO bookstore VALUES (3, "maze runner", 18, "ya", 5);
+INSERT INTO bookstore VALUES (4, "dune", 25, "scifi", 4);
+INSERT INTO bookstore VALUES (5, "brav new world", 12, "classic", 1);
+INSERT INTO bookstore VALUES (6, "crazy rich asians", 15, "fiction", 3);
+INSERT INTO bookstore VALUES (7, "little women", 14, "classic", 4);
+INSERT INTO bookstore VALUES (8, "twilight", 16, "ya", 4);
+INSERT INTO bookstore VALUES (9, "ballad", 22, "ya", 2);
+INSERT INTO bookstore VALUES (10, "soldier spy", 18, "classic", 6);
+INSERT INTO bookstore VALUES (11, "harry potter2", 20, "ya", 2);
+INSERT INTO bookstore VALUES (12, "harry potter3", 20, "ya", 3);
+INSERT INTO bookstore VALUES (13, "harry potter4", 20, "ya", 4);
+INSERT INTO bookstore VALUES (14, "harry potter5", 20, "ya", 5);
+INSERT INTO bookstore VALUES (15, "harry potter6", 20, "ya", 6);
+INSERT INTO bookstore VALUES (16, "harry potter7", 20, "ya", 7);
+
+-- display the database by genre
+SELECT * from bookstore GROUP BY genre;
+
+--- organize the database by price
+SELECT * FROM bookstore ORDER BY price;
