@@ -1,0 +1,55 @@
+
+
+-- Show Customers (their full names, customer ID, and country) who are not in the US
+SELECT firstname, lastname, customerid, country
+FROM chinook.customers
+WHERE country <> 'USA'
+;
+
+-- Find the Invoices of customers who are from Brazil
+SELECT invoiceid, invoicedate, billingcountry, firstname, lastname
+FROM chinook.invoices AS inv
+LEFT JOIN chinook.customers AS cust
+ON inv.customerid = cust.customerid
+WHERE billingcountry = 'Brazil'
+;
+
+-- Show the invoices associated with each employee
+SELECT inv.InvoiceId, e.FirstName, e.LastName
+FROM chinook.invoices inv
+LEFT JOIN chinook.customers c
+ON c.CustomerId = inv.CustomerId
+LEFT JOIN chinook.employees e
+ON c.SupportRepId = e.EmployeeId
+;
+
+-- How many invoices were there in 2009?
+SELECT count(*)
+FROM chinook.invoices
+WHERE invoicedate BETWEEN '2009-01-01' AND '2009-12-31'
+;
+
+-- Make a list including purchased track name and artist name with each invoice
+
+SELECT invoiceid, ar.name AS Artist, t.name AS Track
+FROM chinook.invoice_items AS inv
+LEFT JOIN chinook.tracks AS t
+ON inv.trackid = t.trackid
+INNER JOIN chinook.albums AS al
+ON t.albumid = al.albumid
+LEFT JOIN chinook.artists ar
+ON al.artistid = ar.artistid
+;
+
+-- Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+SELECT t.name AS 'track', al.title AS 'Album', m.name AS 'Medium', g.name AS 'genre'
+FROM chinook.tracks AS t
+JOIN chinook.albums AS al
+ON al.albumid = t.albumid
+JOIN chinook.media_types AS m
+ON m.mediatypeid = t.mediatypeid
+JOIN chinook.genres AS g
+ON g.genreid = t.genreid
+;
+
+
